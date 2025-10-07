@@ -26,11 +26,12 @@ int addStutend(Student student, Student *students, int *studentsGlobalCounter)
   }
 }
 
-void handleAddStudent(Student *students, int *studentsGlobalCounter)
+int handleAddStudent(Student *students, int *studentsGlobalCounter)
 {
   char name[100];
   char course[50];
   char phoneNumber[15];
+  char buffer[128];
   int confirmation;
 
   while (confirmation != 1)
@@ -38,17 +39,25 @@ void handleAddStudent(Student *students, int *studentsGlobalCounter)
     printf("\nDigite os dados do estudante um por um:\n");
 
     printf("Nome:\n");
-    scanf("%s", name);
+    if (fgets(name, 100, stdin) == NULL)
+      return 1;
+    name[strcspn(name, "\n")] = '\0';
 
     printf("Um curso entre Engenharia, Direito, Psicologia, Fisioterapia, Letras, Enfermagem e Arquitetura\n");
-    scanf("%s", course);
+    if (fgets(course, 50, stdin) == NULL)
+      return 1;
+    course[strcspn(course, "\n")] = '\0';
 
     printf("Numero de telefone:\n");
-    scanf("%s", phoneNumber);
+    if (fgets(phoneNumber, 15, stdin) == NULL)
+      return 1;
+    phoneNumber[strcspn(phoneNumber, "\n")] = '\0';
 
     printf("\nEsses sao os dados especificados, confirmar?\n Nome: %s\n Curso: %s\n Numero de telefone: %s\n", name, course, phoneNumber);
     printf("1. Sim\n2. Nao\n");
-    scanf("%d", &confirmation);
+    if (fgets(buffer, 128, stdin) == NULL)
+      return 1;
+    sscanf(buffer, "%d", &confirmation);
   }
   Student student = {
       .registration = *studentsGlobalCounter + 1,

@@ -17,7 +17,7 @@ int main()
       .registrationDate = 12345,
   };
   addStudentToFile(student); */
-
+  char buffer[128];
   int num;
   while (num != 0)
   {
@@ -27,7 +27,10 @@ int main()
         "2. Adicionar livro.\n"
         "3. Alugar livro para estudante.\n"
         "4. Sair.\n");
-    scanf("%d", &num);
+
+    if (fgets(buffer, 128, stdin) == NULL)
+      return 1;
+    sscanf(buffer, "%d", &num);
     switch (num)
     {
     case 1:
