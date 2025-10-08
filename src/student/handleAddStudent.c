@@ -17,7 +17,7 @@ int addStutend(Student student, Student *students, int *studentsGlobalCounter)
   {
     students = temp;
     students[*studentsGlobalCounter] = student;
-    *studentsGlobalCounter++;
+    *studentsGlobalCounter += 1;
   }
   if (addStudentToFile(student))
   {
