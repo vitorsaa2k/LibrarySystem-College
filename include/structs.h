@@ -6,9 +6,9 @@ typedef struct Book
   int releaseYear;
   int avaliableCopies;
   bool isAvaliable;
-  char *title;
-  char *author;
-  char *publisher;
+  char title[100];
+  char author[80];
+  char publisher[60];
 } Book;
 
 typedef struct Student
