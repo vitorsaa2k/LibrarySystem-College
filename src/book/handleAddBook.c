@@ -74,7 +74,8 @@ void handleAddBook(Book *books, int *booksGlobalCounter)
   Book book = {
       .id = *booksGlobalCounter + 1,
       .releaseYear = releaseYear,
-      .avaliableCopies = totalCopies};
+      .avaliableCopies = totalCopies,
+      .timesRent = 0};
 
   strncpy(book.title, title, sizeof(title));
   book.title[sizeof(title)] = '\0';

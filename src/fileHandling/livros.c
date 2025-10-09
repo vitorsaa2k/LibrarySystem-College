@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-const char *BOOK_FORMAT_OUT = "%d,%s,%s,%s,%d,%d,%d\n";
+const char *BOOK_FORMAT_OUT = "%d,%s,%s,%s,%d,%d,%d,%d\n";
 const char *BOOK_FORMAT_IN = "%d,%[^,],%[^,],%[^,],%d,%d,%d\n";
 
 Book *getBooks(int *globalCounter)
@@ -23,7 +23,7 @@ Book *getBooks(int *globalCounter)
   Book book;
   while (fgets(buffer, sizeof(buffer), booksFile) != NULL)
   {
-    sscanf(buffer, BOOK_FORMAT_IN, &book.id, book.title, book.author, book.publisher, &book.releaseYear, &book.avaliableCopies, &book.isAvaliable);
+    sscanf(buffer, BOOK_FORMAT_IN, &book.id, book.title, book.author, book.publisher, &book.releaseYear, &book.avaliableCopies, &book.isAvaliable, &book.timesRent);
     // printf(BOOK_FORMAT_OUT, student.registration, student.name, student.course, student.phoneNumber, student.registrationDate);
 
     Book *temp = (Book *)realloc(books, (count + 1) * sizeof(Book));
@@ -54,6 +54,6 @@ bool addBookToFile(Book book)
     return false;
   }
 
-  fprintf(booksFile, BOOK_FORMAT_OUT, book.id, book.title, book.author, book.publisher, book.releaseYear, book.avaliableCopies, book.isAvaliable);
+  fprintf(booksFile, BOOK_FORMAT_OUT, book.id, book.title, book.author, book.publisher, book.releaseYear, book.avaliableCopies, book.isAvaliable, book.timesRent);
   return true;
 }

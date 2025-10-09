@@ -5,6 +5,7 @@ typedef struct Book
   int id;
   int releaseYear;
   int avaliableCopies;
+  int timesRent;
   bool isAvaliable;
   char title[100];
   char author[80];
