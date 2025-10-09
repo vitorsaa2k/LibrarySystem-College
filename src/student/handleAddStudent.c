@@ -42,7 +42,7 @@ int handleAddStudent(Student *students, int *studentsGlobalCounter)
     if (fgets(name, 100, stdin) == NULL)
       return 1;
     name[strcspn(name, "\n")] = '\0';
-
+    // TODO add verification if user wrote the exact name of the course, create an includes function as an util
     printf("Um curso entre Engenharia, Direito, Psicologia, Fisioterapia, Letras, Enfermagem e Arquitetura\n");
     if (fgets(course, 50, stdin) == NULL)
       return 1;

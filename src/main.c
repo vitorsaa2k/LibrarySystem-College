@@ -7,8 +7,16 @@
 
 int main()
 {
+  // Initialization of the files in case they are not created yet.
+  /*   FILE *booksFile = fopen("livros.txt", "w");
+    FILE *usersFile = fopen("usuarios.txt", "w");
+    fcloseall(); */
+
   int studentsCounter_global = 0;
   Student *students_global = getStudents(&studentsCounter_global);
+
+  int booksCounter_global = 0;
+  Book *books_global = getBooks(&booksCounter_global);
   /* Student student = {
       .course = "Egenharia",
       .name = "Vitor",
@@ -19,7 +27,7 @@ int main()
   addStudentToFile(student); */
   char buffer[128];
   int num;
-  while (num != 0)
+  while (num != 4)
   {
     printf(
         "\nEscolha um numero para continuar:\n"
@@ -37,14 +45,13 @@ int main()
       handleAddStudent(students_global, &studentsCounter_global);
       break;
     case 2:
-      printf("voce escolheu o numero 2");
+      handleAddBook(books_global, &booksCounter_global);
       break;
     case 3:
       printf("voce escolheu o numero 3");
       break;
     case 4:
       printf("Saindo...");
-      num = 0;
       break;
 
     default:

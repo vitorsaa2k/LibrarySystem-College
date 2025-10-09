@@ -7,14 +7,13 @@
 const char *BOOK_FORMAT_OUT = "%d,%s,%s,%s,%d,%d,%d\n";
 const char *BOOK_FORMAT_IN = "%d,%[^,],%[^,],%[^,],%d,%d,%d\n";
 
-Student *getBooks(int *globalCounter)
+Book *getBooks(int *globalCounter)
 {
   char buffer[512];
   Book *books = NULL;
   int count = 0;
   FILE *booksFile;
   booksFile = fopen("livros.txt", "r");
-
   if (booksFile == NULL)
   {
     printf("Failed to open file");
@@ -45,7 +44,7 @@ Student *getBooks(int *globalCounter)
   return books;
 }
 
-bool addStudentToFile(Book book)
+bool addBookToFile(Book book)
 {
   FILE *booksFile;
   booksFile = fopen("livros.txt", "a");
