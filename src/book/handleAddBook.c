@@ -44,7 +44,6 @@ void handleAddBook(Book *books, int *booksGlobalCounter)
     if (fgets(title, 100, stdin) == NULL)
       return;
     title[strcspn(title, "\n")] = '\0';
-    // TODO add verification if user wrote the exact name of the course, create an includes function as an util
     printf("Nome do autor\n");
     if (fgets(author, 80, stdin) == NULL)
       return;
