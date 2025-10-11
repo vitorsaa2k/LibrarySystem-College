@@ -55,5 +55,6 @@ bool addStudentToFile(Student student)
   }
 
   fprintf(usersFile, STUDENT_FORMAT_OUT, student.registration, student.name, student.course, student.phoneNumber, student.registrationDate);
+  fclose(usersFile);
   return true;
 }

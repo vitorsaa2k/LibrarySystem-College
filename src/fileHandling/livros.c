@@ -55,5 +55,6 @@ bool addBookToFile(Book book)
   }
 
   fprintf(booksFile, BOOK_FORMAT_OUT, book.id, book.title, book.author, book.publisher, book.releaseYear, book.avaliableCopies, book.isAvaliable, book.timesRent);
+  fclose(booksFile);
   return true;
 }
