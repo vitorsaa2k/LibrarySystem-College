@@ -1,4 +1,3 @@
-#include <stdbool.h>
 
 typedef struct Book
 {
@@ -6,7 +5,7 @@ typedef struct Book
   int releaseYear;
   int avaliableCopies;
   int timesRent;
-  bool isAvaliable;
+  int isAvaliable;
   char title[100];
   char author[80];
   char publisher[60];
@@ -31,6 +30,6 @@ typedef struct RentInfo
   long long rentDate;
   // should be 7 days after the rentDate
   long long devolutionDate;
-  // if false, means the student does not have the book, either because it was lost or given back.
-  bool isActive;
+  // if 0, means the student does not have the book, either because it was lost or given back.
+  int isActive;
 } RentInfo;
