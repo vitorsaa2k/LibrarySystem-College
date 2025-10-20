@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "structs.h"
 #include <string.h>
 #include <stdlib.h>
+#include "structs.h"
 
 const char *STUDENT_FORMAT_OUT = "%d,%s,%s,%s,%lld\n";
 const char *STUDENT_FORMAT_IN = "%d,%[^,],%[^,],%[^,],%lld\n";

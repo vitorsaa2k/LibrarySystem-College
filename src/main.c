@@ -1,9 +1,7 @@
 #include <stdio.h>
-#include <string.h>
-#include "firstMenuMethods.h"
-#include "fileHandling.h"
 #include "structs.h"
-#include "utils.h"
+#include "fileHandling.h"
+#include "firstMenuMethods.h"
 
 int main()
 {
@@ -17,14 +15,9 @@ int main()
 
   int booksCounter_global = 0;
   Book *books_global = getBooks(&booksCounter_global);
-  /* Student student = {
-      .course = "Egenharia",
-      .name = "Vitor",
-      .phoneNumber = "0990",
-      .registration = 1,
-      .registrationDate = 12345,
-  };
-  addStudentToFile(student); */
+
+  int rentsCounter_global = 0;
+  BookRent *rents_global = getRents(&rentsCounter_global);
   char buffer[128];
   int num;
   while (num != 4)
@@ -35,20 +28,22 @@ int main()
         "2. Adicionar livro.\n"
         "3. Alugar livro para estudante.\n"
         "4. Sair.\n");
-
     if (fgets(buffer, 128, stdin) == NULL)
+    {
+      printf("Error getting user input in main menu");
       return 1;
+    }
     sscanf(buffer, "%d", &num);
     switch (num)
     {
     case 1:
-      handleAddStudent(students_global, &studentsCounter_global);
+      students_global = handleAddStudent(students_global, &studentsCounter_global);
       break;
     case 2:
-      handleAddBook(books_global, &booksCounter_global);
+      books_global = handleAddBook(books_global, &booksCounter_global);
       break;
     case 3:
-      printf("voce escolheu o numero 3");
+      rents_global = handleRentBook(books_global, students_global, rents_global, &studentsCounter_global, &booksCounter_global, &rentsCounter_global);
       break;
     case 4:
       printf("Saindo...");

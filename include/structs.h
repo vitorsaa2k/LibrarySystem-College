@@ -1,3 +1,6 @@
+#pragma once
+#ifndef STRUCTS_HEADER // Check if STRUCTS_HEADER is NOT defined
+#define STRUCTS_HEADER // Define STRUCTS_HEADER if it wasn't already
 
 typedef struct Book
 {
@@ -21,7 +24,7 @@ typedef struct Student
   long long registrationDate;
 } Student;
 
-typedef struct RentInfo
+typedef struct BookRent
 {
   int id;
   int userRegistration;
@@ -32,4 +35,6 @@ typedef struct RentInfo
   long long devolutionDate;
   // if 0, means the student does not have the book, either because it was lost or given back.
   int isActive;
-} RentInfo;
+} BookRent;
+
+#endif // STRUCTS_HEADER

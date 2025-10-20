@@ -3,11 +3,10 @@
 #include <string.h>
 #include "structs.h"
 #include "fileHandling.h"
-#include "utils.h"
 
-int addBook(Book book, Book *books, int *booksGlobalCounter)
+Book *addBook(Book book, Book *books, int *booksGlobalCounter)
 {
-  Book *temp = (Book *)realloc(books, (*booksGlobalCounter + 1) * sizeof(Book));
+  Book *temp = realloc(books, (*booksGlobalCounter + 1) * sizeof(Book));
 
   if (temp == NULL)
   {
@@ -15,18 +14,18 @@ int addBook(Book book, Book *books, int *booksGlobalCounter)
   }
   else
   {
+    temp[*booksGlobalCounter] = book;
     books = temp;
-    books[*booksGlobalCounter] = book;
     *booksGlobalCounter += 1;
   }
   if (addBookToFile(book))
   {
     printf("\nLivro: \"%s\" adicionado com sucesso\n", book.title);
-    return 0;
+    return temp;
   }
 }
 
-void handleAddBook(Book *books, int *booksGlobalCounter)
+Book *handleAddBook(Book *books, int *booksGlobalCounter)
 {
   char title[100];
   char author[80];
@@ -42,32 +41,32 @@ void handleAddBook(Book *books, int *booksGlobalCounter)
 
     printf("Nome do livro:\n");
     if (fgets(title, 100, stdin) == NULL)
-      return;
+      return books;
     title[strcspn(title, "\n")] = '\0';
     printf("Nome do autor\n");
     if (fgets(author, 80, stdin) == NULL)
-      return;
+      return books;
     author[strcspn(author, "\n")] = '\0';
 
     printf("Nome da editora:\n");
     if (fgets(publisher, 60, stdin) == NULL)
-      return;
+      return books;
     publisher[strcspn(publisher, "\n")] = '\0';
 
     printf("Ano de lancamento:\n");
     if (fgets(buffer, 128, stdin) == NULL)
-      return;
+      return books;
     sscanf(buffer, "%d", &releaseYear);
 
     printf("Quantas copias deseja adicionar?\n");
     if (fgets(buffer, 128, stdin) == NULL)
-      return;
+      return books;
     sscanf(buffer, "%d", &totalCopies);
 
     printf("\nEsses sao os dados especificados, confirmar?\n Nome do livro: %s\n Autor: %s\n Nome da editora: %s\n Ano de lancamento: %d\n", title, author, publisher, releaseYear);
     printf("1. Sim\n2. Nao\n");
     if (fgets(buffer, 128, stdin) == NULL)
-      return;
+      return books;
     sscanf(buffer, "%d", &confirmation);
   }
   Book book = {
@@ -85,5 +84,6 @@ void handleAddBook(Book *books, int *booksGlobalCounter)
   strncpy(book.publisher, publisher, sizeof(book.publisher));
   book.publisher[sizeof(publisher)] = '\0';
 
-  addBook(book, books, booksGlobalCounter);
+  Book *newBooks = addBook(book, books, booksGlobalCounter);
+  return newBooks;
 };

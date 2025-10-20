@@ -1,9 +1,8 @@
 #include "structs.h"
-
-void handleAddStudent(Student *students, int *globalStudentsCounter);
-void handleAddBook(Book *books, int *booksGlobalCounter);
-void handleRentBook();
-void handleBookDevolution();
+Student *handleAddStudent(Student *students, int *globalStudentsCounter);
+Book *handleAddBook(Book *books, int *booksGlobalCounter);
+BookRent *handleRentBook(Book *books, Student *students, BookRent *rents, int *studentsCounterGlobal, int *booksCounterGlobal, int *rentsCounterGlobal);
+/* void handleBookDevolution();
 void handleSearchBook();
 void handleSearchStudent();
-void handleListActiveRents();
+void handleListActiveRents(); */

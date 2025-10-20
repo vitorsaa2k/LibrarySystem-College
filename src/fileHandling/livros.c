@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "structs.h"
 #include <string.h>
 #include <stdlib.h>
+#include "structs.h"
 
 const char *BOOK_FORMAT_OUT = "%d,%s,%s,%s,%d,%d,%d,%d\n";
 const char *BOOK_FORMAT_IN = "%d,%[^,],%[^,],%[^,],%d,%d,%d,%d\n";
