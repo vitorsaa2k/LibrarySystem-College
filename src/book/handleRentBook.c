@@ -8,6 +8,7 @@ int bookLinearSearch(Book *arr, int n, int key);
 long long addSevenDaysToRawTime(long long *rawtime);
 long long getCurrentRawTime();
 int studentLinearSearch(Student *arr, int n, int key);
+void incrementBookRentCountByOne(int bookId);
 
 BookRent *addRent(BookRent rent, BookRent *rents, int *rentsGlobalCounter)
 {
@@ -117,7 +118,64 @@ BookRent *handleRentBook(Book *books, Student *students, BookRent *rents, int *s
       .userRegistration = students[studentIndex].registration};
 
   BookRent *newRents = addRent(rent, rents, rentsCounterGlobal);
+  incrementBookRentCountByOne(rent.bookId);
   return newRents;
+}
+
+void incrementBookRentCountByOne(int bookId)
+{
+  FILE *originalFile = fopen("livros.txt", "r");
+  FILE *tempFile = fopen("temp.txt", "w");
+
+  if (originalFile == NULL || tempFile == NULL)
+  {
+    perror("Error opening files");
+    return;
+  }
+
+  char lineBuffer[512];
+  Book currentBook;
+  int found = 0;
+
+  while (fgets(lineBuffer, sizeof(lineBuffer), originalFile) != NULL)
+  {
+    sscanf(lineBuffer, BOOK_FORMAT_IN, &currentBook.id, currentBook.title, currentBook.author, currentBook.publisher, &currentBook.releaseYear, &currentBook.avaliableCopies, &currentBook.isAvaliable, &currentBook.timesRent);
+    // printf(BOOK_FORMAT_OUT, student.registration, student.name, student.course, student.phoneNumber, student.registrationDate);
+    if (currentBook.id == bookId)
+    {
+      currentBook.timesRent += 1;
+      fprintf(tempFile, BOOK_FORMAT_OUT, currentBook.id, currentBook.title, currentBook.author, currentBook.publisher, currentBook.releaseYear, currentBook.avaliableCopies, currentBook.isAvaliable, currentBook.timesRent);
+      found = 1;
+    }
+    else
+    {
+      fprintf(tempFile, BOOK_FORMAT_OUT, currentBook.id, currentBook.title, currentBook.author, currentBook.publisher, currentBook.releaseYear, currentBook.avaliableCopies, currentBook.isAvaliable, currentBook.timesRent);
+    }
+  };
+
+  fclose(originalFile);
+  fclose(tempFile);
+
+  if (!found)
+  {
+    printf("Book not found");
+  }
+
+  if (remove("livros.txt") == 0)
+  {
+    if (rename("temp.txt", "livros.txt") == 0)
+    {
+      printf("Successfully incremented book rent count by one\n");
+    }
+    else
+    {
+      perror("Error renaming the file");
+    }
+  }
+  else
+  {
+    perror("Error removing original file");
+  }
 }
 
 long long getCurrentRawTime()
