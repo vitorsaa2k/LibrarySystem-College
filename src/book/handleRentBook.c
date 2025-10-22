@@ -3,11 +3,10 @@
 #include <time.h>
 #include "structs.h"
 #include "fileHandling.h"
+#include "utils.h"
 
-int bookLinearSearch(Book *arr, int n, int key);
 long long addSevenDaysToRawTime(long long *rawtime);
 long long getCurrentRawTime();
-int studentLinearSearch(Student *arr, int n, int key);
 void incrementBookRentCountByOne(int bookId);
 
 BookRent *addRent(BookRent rent, BookRent *rents, int *rentsGlobalCounter)
@@ -204,28 +203,4 @@ long long addSevenDaysToRawTime(long long *rawtime)
   info->tm_mday += 7;
   time = mktime(info);
   return (long long)time;
-}
-
-int studentLinearSearch(Student *arr, int n, int key)
-{
-  for (int i = 0; i < n; i++)
-  {
-    if (arr[i].registration == key)
-    {
-      return i;
-    }
-  }
-  return -1;
-}
-
-int bookLinearSearch(Book *arr, int n, int key)
-{
-  for (int i = 0; i < n; i++)
-  {
-    if (arr[i].id == key)
-    {
-      return i;
-    }
-  }
-  return -1;
 }
