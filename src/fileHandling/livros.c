@@ -58,3 +58,66 @@ bool addBookToFile(Book book)
   fclose(booksFile);
   return true;
 }
+
+void parseBook(Book *book, char *bookToParse)
+{
+  sscanf(bookToParse, BOOK_FORMAT_IN, &book->id, book->title, book->author, book->publisher, &book->releaseYear, &book->avaliableCopies, &book->isAvaliable, &book->timesRent);
+}
+
+void printBookToFile(Book book, FILE *file)
+{
+  fprintf(file, BOOK_FORMAT_OUT, book.id, book.title, book.author, book.publisher, book.releaseYear, book.avaliableCopies, book.isAvaliable, book.timesRent);
+}
+
+void incrementBookAvaliableCopies(int bookId, int amount)
+{
+  FILE *originalFile = fopen("livros.txt", "r");
+  FILE *tempFile = fopen("temp.txt", "w");
+
+  if (originalFile == NULL || tempFile == NULL)
+  {
+    perror("Error opening the files");
+  }
+  char buffer[512];
+  Book currentBook;
+  int found = 0;
+
+  while (fgets(buffer, sizeof(buffer), originalFile) != NULL)
+  {
+    parseBook(&currentBook, buffer);
+    if (currentBook.id == bookId)
+    {
+      currentBook.avaliableCopies += amount;
+      printBookToFile(currentBook, tempFile);
+      found = 1;
+    }
+    else
+    {
+      printBookToFile(currentBook, tempFile);
+    }
+  }
+
+  fclose(originalFile);
+  fclose(tempFile);
+
+  if (!found)
+  {
+    printf("Book not found");
+  }
+
+  if (remove("livros.txt") == 0)
+  {
+    if (rename("temp.txt", "livros.txt") == 0)
+    {
+      printf("Changed the avaliable copies successfully");
+    }
+    else
+    {
+      perror("Error renaming temp.txt to livros.txt");
+    }
+  }
+  else
+  {
+    perror("Error removing livros.txt");
+  }
+}

@@ -2,7 +2,7 @@
 Student *handleAddStudent(Student *students, int *globalStudentsCounter);
 Book *handleAddBook(Book *books, int *booksGlobalCounter);
 BookRent *handleRentBook(Book *books, Student *students, BookRent *rents, int *studentsCounterGlobal, int *booksCounterGlobal, int *rentsCounterGlobal);
-/* void handleBookDevolution();
-void handleSearchBook();
+void handleBookDevolution(Book *books, int *booksGlobalCounter, BookRent *rents, int *rentsGlobalCounter);
+/* void handleSearchBook();
 void handleSearchStudent();
 void handleListActiveRents(); */

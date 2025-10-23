@@ -20,14 +20,16 @@ int main()
   BookRent *rents_global = getRents(&rentsCounter_global);
   char buffer[128];
   int num;
-  while (num != 4)
+  int shouldExit;
+  while (shouldExit != 1)
   {
     printf(
         "\nEscolha um numero para continuar:\n"
         "1. Adicionar estudante.\n"
         "2. Adicionar livro.\n"
         "3. Alugar livro para estudante.\n"
-        "4. Sair.\n");
+        "4. Devolver livro alugado\n"
+        "0. Sair.\n");
     if (fgets(buffer, 128, stdin) == NULL)
     {
       printf("Error getting user input in main menu");
@@ -44,8 +46,15 @@ int main()
       break;
     case 3:
       rents_global = handleRentBook(books_global, students_global, rents_global, &studentsCounter_global, &booksCounter_global, &rentsCounter_global);
+      books_global = getBooks(&booksCounter_global);
       break;
     case 4:
+      handleBookDevolution(books_global, &booksCounter_global, rents_global, &rentsCounter_global);
+      books_global = getBooks(&booksCounter_global);
+      rents_global = getRents(&rentsCounter_global);
+      break;
+    case 0:
+      shouldExit = 1;
       printf("Saindo...");
       break;
 

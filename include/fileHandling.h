@@ -9,3 +9,6 @@ bool addRentToFile(BookRent rent);
 
 extern const char *BOOK_FORMAT_OUT;
 extern const char *BOOK_FORMAT_IN;
+
+extern const char *RENT_FORMAT_OUT;
+extern const char *RENT_FORMAT_IN;

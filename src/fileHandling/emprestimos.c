@@ -55,8 +55,16 @@ bool addRentToFile(BookRent rent)
   }
 
   fprintf(rentsFile, RENT_FORMAT_OUT, rent.id, rent.userRegistration, rent.bookId, rent.rentDate, rent.devolutionDate, rent.isActive);
-  printf("Content added");
   fclose(rentsFile);
-  printf("file closed");
   return true;
+}
+
+void parseRent(BookRent *rent, char *rentToParse)
+{
+  sscanf(rentToParse, RENT_FORMAT_IN, &rent->id, &rent->userRegistration, &rent->bookId, &rent->rentDate, &rent->devolutionDate, &rent->isActive);
+}
+
+void printRentToFile(BookRent rent, FILE *file)
+{
+  fprintf(file, RENT_FORMAT_OUT, rent.id, rent.userRegistration, rent.bookId, rent.rentDate, rent.devolutionDate, rent.isActive);
 }

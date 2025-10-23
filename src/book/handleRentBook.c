@@ -118,6 +118,7 @@ BookRent *handleRentBook(Book *books, Student *students, BookRent *rents, int *s
 
   BookRent *newRents = addRent(rent, rents, rentsCounterGlobal);
   incrementBookRentCountByOne(rent.bookId);
+  incrementBookAvaliableCopies(rent.bookId, -1);
   return newRents;
 }
 
