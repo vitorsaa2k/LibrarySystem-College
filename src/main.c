@@ -29,6 +29,7 @@ int main()
         "2. Adicionar livro.\n"
         "3. Alugar livro para estudante.\n"
         "4. Devolver livro alugado\n"
+        "5. Pesquisar livro\n"
         "0. Sair.\n");
     if (fgets(buffer, 128, stdin) == NULL)
     {
@@ -52,6 +53,9 @@ int main()
       handleBookDevolution(books_global, &booksCounter_global, rents_global, &rentsCounter_global);
       books_global = getBooks(&booksCounter_global);
       rents_global = getRents(&rentsCounter_global);
+      break;
+    case 5:
+      handleSearchBook(books_global, &booksCounter_global);
       break;
     case 0:
       shouldExit = 1;
