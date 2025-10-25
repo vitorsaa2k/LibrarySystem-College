@@ -2,6 +2,7 @@
 #include "structs.h"
 #include "fileHandling.h"
 #include "firstMenuMethods.h"
+#include <locale.h>
 
 int main()
 {
@@ -9,7 +10,7 @@ int main()
   /*   FILE *booksFile = fopen("livros.txt", "w");
     FILE *usersFile = fopen("usuarios.txt", "w");
     fcloseall(); */
-
+  setlocale(LC_TIME, "pt_BR.UTF-8");
   int studentsCounter_global = 0;
   Student *students_global = getStudents(&studentsCounter_global);
 
@@ -31,6 +32,7 @@ int main()
         "4. Devolver livro alugado\n"
         "5. Pesquisar livro\n"
         "6. Pesquisar estudante\n"
+        "7. Listar emprestimos ativos\n"
         "0. Sair.\n");
     if (fgets(buffer, 128, stdin) == NULL)
     {
@@ -60,6 +62,9 @@ int main()
       break;
     case 6:
       handleSearchStudent(students_global, &studentsCounter_global);
+      break;
+    case 7:
+      handleListActiveRents(rents_global, &rentsCounter_global);
       break;
     case 0:
       shouldExit = 1;

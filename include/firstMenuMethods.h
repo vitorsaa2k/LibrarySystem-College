@@ -5,4 +5,4 @@ BookRent *handleRentBook(Book *books, Student *students, BookRent *rents, int *s
 void handleBookDevolution(Book *books, int *booksGlobalCounter, BookRent *rents, int *rentsGlobalCounter);
 void handleSearchBook(Book *books, int *globalBooksCounter);
 void handleSearchStudent(Student *students, int *globalStudentsCounter);
-// void handleListActiveRents()
+void handleListActiveRents(BookRent *rents, int *rentsCounterGlobal);

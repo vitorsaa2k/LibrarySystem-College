@@ -2,7 +2,6 @@
 #include "utils.h"
 #include <time.h>
 #include <stdio.h>
-#include <locale.h>
 
 int handleStudentIdSearch(Student *students, int *globalStudentsCounter);
 
@@ -41,7 +40,7 @@ void handleSearchStudent(Student *students, int *globalStudentsCounter)
         break;
       }
       Student student = students[studentIndex];
-      setlocale(LC_TIME, "pt_BR.UTF-8");
+
       struct tm *info = localtime(&student.registrationDate);
       char timeBuffer[80];
       strftime(timeBuffer, sizeof(timeBuffer), "%A, %d de %B, %Y. %H:%M:%S.", info);
