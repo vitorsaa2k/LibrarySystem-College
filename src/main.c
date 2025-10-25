@@ -33,6 +33,7 @@ int main()
         "5. Pesquisar livro\n"
         "6. Pesquisar estudante\n"
         "7. Listar emprestimos ativos\n"
+        "8. Listar livros mais emprestados\n"
         "0. Sair.\n");
     if (fgets(buffer, 128, stdin) == NULL)
     {
@@ -65,6 +66,9 @@ int main()
       break;
     case 7:
       handleListActiveRents(rents_global, &rentsCounter_global);
+      break;
+    case 8:
+      handleListMostRentedBooks(books_global, &booksCounter_global);
       break;
     case 0:
       shouldExit = 1;
