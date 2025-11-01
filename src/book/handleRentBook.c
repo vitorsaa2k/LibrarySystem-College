@@ -91,11 +91,17 @@ BookRent *handleRentBook(Book *books, Student *students, BookRent *rents, int *s
     }
 
     const Book foundBook = books[bookIndex];
-    /*  if (foundBook.avaliableCopies == 0)
-     {
-       printf("Este livro nao esta disponivel");
-       return;
-     } */
+    if (foundBook.avaliableCopies == 0 || !foundBook.isAvaliable)
+    {
+      printf("Este livro nao esta disponivel\n");
+      printf("Pressione enter para continuar...\n");
+      char tempBuffer[32];
+      if (fgets(tempBuffer, sizeof(tempBuffer), stdin) == NULL)
+      {
+        printf("failed to get user input");
+      }
+      return rents;
+    }
     printf("\nLivro encontrado:\nNome: %s\nAutor: %s\nCopias disponiveis: %d\n", books[bookIndex].title, books[bookIndex].author, books[bookIndex].avaliableCopies);
 
     printf("\nConfirmar?\n1.Sim\n2.Nao\n");

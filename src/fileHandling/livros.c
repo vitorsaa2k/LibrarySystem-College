@@ -88,6 +88,10 @@ void incrementBookAvaliableCopies(int bookId, int amount)
     if (currentBook.id == bookId)
     {
       currentBook.avaliableCopies += amount;
+      if (currentBook.avaliableCopies == 0)
+      {
+        currentBook.isAvaliable = 0;
+      }
       printBookToFile(currentBook, tempFile);
       found = 1;
     }

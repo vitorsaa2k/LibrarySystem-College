@@ -73,7 +73,8 @@ Book *handleAddBook(Book *books, int *booksGlobalCounter)
       .id = *booksGlobalCounter + 1,
       .releaseYear = releaseYear,
       .avaliableCopies = totalCopies,
-      .timesRent = 0};
+      .timesRent = 0,
+      .isAvaliable = 1};
 
   strncpy(book.title, title, sizeof(title));
   book.title[sizeof(title)] = '\0';

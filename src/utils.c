@@ -1,4 +1,5 @@
 #include "structs.h"
+#include <stdio.h>
 
 int studentLinearSearch(Student *arr, int n, int key)
 {
@@ -34,4 +35,14 @@ int rentLinearSearch(BookRent *arr, int n, int key)
     }
   }
   return -1;
+}
+
+void waitUntilUserInput()
+{
+  printf("Pressione enter para continuar...");
+  char tempBuffer[32];
+  if (fgets(tempBuffer, sizeof(tempBuffer), stdin) == NULL)
+  {
+    printf("failed to get user input");
+  }
 }

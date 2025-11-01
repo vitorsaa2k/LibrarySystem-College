@@ -8,6 +8,7 @@ typedef struct Book
   int releaseYear;
   int avaliableCopies;
   int timesRent;
+  // if 0, means the book is not avaliable
   int isAvaliable;
   char title[100];
   char author[80];
