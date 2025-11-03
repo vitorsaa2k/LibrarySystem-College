@@ -1,4 +1,5 @@
 #include "structs.h"
+#include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -39,11 +40,5 @@ void handleListMostRentedBooks(Book *books, int *globalBooksCounter)
            "Numero de vezes emprestado: %d\n",
            i + 1, booksToSort[i].title, booksToSort[i].timesRent);
   }
-  // TODO add an util function for pausing the printing.
-  printf("Pressione enter para continuar...");
-  char tempBuffer[32];
-  if (fgets(tempBuffer, sizeof(tempBuffer), stdin) == NULL)
-  {
-    printf("failed to get user input");
-  }
+  waitUntilUserInput();
 }

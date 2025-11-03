@@ -1,4 +1,5 @@
 #include "structs.h"
+#include "utils.h"
 #include <time.h>
 #include <stdio.h>
 
@@ -26,10 +27,5 @@ void handleListActiveRents(BookRent *rents, int *rentsCounterGlobal)
              rent.id, rent.bookId, rent.userRegistration, rentDateBuffer, devolutionDateBuffer);
     }
   }
-  printf("Pressione enter para continuar...");
-  char tempBuffer[32];
-  if (fgets(tempBuffer, sizeof(tempBuffer), stdin) == NULL)
-  {
-    printf("failed to get user input");
-  }
+  waitUntilUserInput();
 }
