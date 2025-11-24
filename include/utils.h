@@ -1,5 +1,5 @@
-#ifndef UTILS_HEADER // Check if STRUCTS_HEADER is NOT defined
-#define UTILS_HEADER // Define STRUCTS_HEADER if it wasn't already
+#ifndef UTILS_HEADER // Check if UTILS_HEADER is NOT defined
+#define UTILS_HEADER // Define UTILS_HEADER if it wasn't already
 
 #include "structs.h"
 

@@ -15,7 +15,6 @@ void handleSearchStudent(Student *students, int *globalStudentsCounter)
     printf(
         "\nEscolha uma opcao para fazer a pesquisa:\n"
         "1. Pesquisar por id\n"
-        "2. Pesquisar por nome\n"
         "9. Voltar para o menu principal.\n");
     if (fgets(buffer, sizeof(buffer), stdin) == NULL)
     {
