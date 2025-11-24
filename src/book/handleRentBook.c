@@ -141,7 +141,6 @@ void incrementBookRentCountByOne(int bookId)
   while (fgets(lineBuffer, sizeof(lineBuffer), originalFile) != NULL)
   {
     sscanf(lineBuffer, BOOK_FORMAT_IN, &currentBook.id, currentBook.title, currentBook.author, currentBook.publisher, &currentBook.releaseYear, &currentBook.avaliableCopies, &currentBook.isAvaliable, &currentBook.timesRent);
-    // printf(BOOK_FORMAT_OUT, student.registration, student.name, student.course, student.phoneNumber, student.registrationDate);
     if (currentBook.id == bookId)
     {
       currentBook.timesRent += 1;
@@ -183,18 +182,9 @@ long long getCurrentRawTime()
 {
 
   time_t rawtime;
-  // struct tm *info;
 
   // Get current calendar time
   time(&rawtime);
-  /*  info = localtime(&rawtime); // Convert to local time struct tm
-
-   printf("Current local date and time: %s", asctime(info));
-
-   // Using strftime for custom formatting
-   char buffer[80];
-   strftime(buffer, sizeof(buffer), "Today is %A, %B %d, %Y. The time is %H:%M:%S.", info);
-   printf("%s\n", buffer); */
   return (long long)rawtime;
 }
 

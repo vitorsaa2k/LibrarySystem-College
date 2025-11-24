@@ -24,7 +24,6 @@ BookRent *getRents(int *globalCounter)
   while (fgets(buffer, sizeof(buffer), rentsFile) != NULL)
   {
     sscanf(buffer, RENT_FORMAT_IN, &rent.id, &rent.userRegistration, &rent.bookId, &rent.rentDate, &rent.devolutionDate, &rent.isActive);
-    // printf(BOOK_FORMAT_OUT, student.registration, student.name, student.course, student.phoneNumber, student.registrationDate);
 
     BookRent *temp = (BookRent *)realloc(rents, (count + 1) * sizeof(BookRent));
 

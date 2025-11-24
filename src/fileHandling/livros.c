@@ -24,7 +24,6 @@ Book *getBooks(int *globalCounter)
   while (fgets(buffer, sizeof(buffer), booksFile) != NULL)
   {
     sscanf(buffer, BOOK_FORMAT_IN, &book.id, book.title, book.author, book.publisher, &book.releaseYear, &book.avaliableCopies, &book.isAvaliable, &book.timesRent);
-    // printf(BOOK_FORMAT_OUT, student.registration, student.name, student.course, student.phoneNumber, student.registrationDate);
 
     Book *temp = (Book *)realloc(books, (count + 1) * sizeof(Book));
 

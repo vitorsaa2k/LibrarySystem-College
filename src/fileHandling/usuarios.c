@@ -24,7 +24,6 @@ Student *getStudents(int *globalCounter)
   while (fgets(buffer, sizeof(buffer), usersFile) != NULL)
   {
     sscanf(buffer, STUDENT_FORMAT_IN, &student.registration, student.name, student.course, student.phoneNumber, &student.registrationDate);
-    // printf(STUDENT_FORMAT_OUT, student.registration, student.name, student.course, student.phoneNumber, student.registrationDate);
 
     Student *temp = (Student *)realloc(students, (count + 1) * sizeof(Student));
 

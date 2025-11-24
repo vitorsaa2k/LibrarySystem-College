@@ -6,10 +6,6 @@
 
 int main()
 {
-  // Initialization of the files in case they are not created yet.
-  /*   FILE *booksFile = fopen("livros.txt", "w");
-    FILE *usersFile = fopen("usuarios.txt", "w");
-    fcloseall(); */
   setlocale(LC_TIME, "pt_BR.UTF-8");
   int studentsCounter_global = 0;
   Student *students_global = getStudents(&studentsCounter_global);
