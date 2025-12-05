@@ -25,11 +25,11 @@ int main()
         "1. Adicionar estudante.\n"
         "2. Adicionar livro.\n"
         "3. Alugar livro para estudante.\n"
-        "4. Devolver livro alugado\n"
-        "5. Pesquisar livro\n"
-        "6. Pesquisar estudante\n"
-        "7. Listar emprestimos ativos\n"
-        "8. Listar livros mais emprestados\n"
+        "4. Devolver livro alugado.\n"
+        "5. Pesquisar livro.\n"
+        "6. Pesquisar estudante.\n"
+        "7. Listar emprestimos ativos.\n"
+        "8. Listar livros mais emprestados.\n"
         "0. Sair.\n");
     if (fgets(buffer, 128, stdin) == NULL)
     {
