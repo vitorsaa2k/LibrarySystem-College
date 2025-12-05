@@ -10,3 +10,14 @@ Digite o dado específico e pressione `enter` respectivamente, um após o outro.
 Após inserir o número de telefone, será pedido uma confirmação. Digite 1 para confirmar e 2 para digitar os dados novamente.
 
 Após confirmar, o estudante será salvo e adicionado ao arquivo de texto "usuarios.txt"
+
+## 2. Adicionar livro
+Selecione essa opção digitando 2 e apertando `enter` no menu principal.
+Após selecionada, será requerido que seja digitado os dados do livro 1 por 1.
+`Título, Autor, Nome da editora, Ano de lançamento e quantas cópias deseja adicionar.`
+
+Digite o dado específico e pressione `enter` respectivamente, um após o outro.
+
+Após inserir o numero total de cópias, será pedido uma confirmação. Digite 1 para confirmar e 2 para digitar os dados novamente.
+
+Após confirmar, o livro será salvo e adicionado ao arquivo de texto "livros.txt"
